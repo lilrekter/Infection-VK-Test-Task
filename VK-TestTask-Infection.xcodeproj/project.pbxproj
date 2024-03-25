@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		D819B81A2BB1C854008051A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8192BB1C854008051A1 /* AppDelegate.swift */; };
 		D819B81C2BB1C854008051A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B81B2BB1C854008051A1 /* SceneDelegate.swift */; };
-		D819B81E2BB1C854008051A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B81D2BB1C854008051A1 /* ViewController.swift */; };
+		D819B81E2BB1C854008051A1 /* SimulationParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B81D2BB1C854008051A1 /* SimulationParametersViewController.swift */; };
 		D819B8212BB1C854008051A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D819B81F2BB1C854008051A1 /* Main.storyboard */; };
 		D819B8232BB1C855008051A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D819B8222BB1C855008051A1 /* Assets.xcassets */; };
 		D819B8262BB1C855008051A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D819B8242BB1C855008051A1 /* LaunchScreen.storyboard */; };
+		D819B8342BB1D73A008051A1 /* ParametersListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8332BB1D73A008051A1 /* ParametersListDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D819B8162BB1C854008051A1 /* VK-TestTask-Infection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK-TestTask-Infection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D819B8192BB1C854008051A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D819B81B2BB1C854008051A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D819B81D2BB1C854008051A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D819B81D2BB1C854008051A1 /* SimulationParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationParametersViewController.swift; sourceTree = "<group>"; };
 		D819B8202BB1C854008051A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D819B8222BB1C855008051A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D819B8252BB1C855008051A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D819B8272BB1C855008051A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D819B8332BB1D73A008051A1 /* ParametersListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersListDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		D819B8182BB1C854008051A1 /* VK-TestTask-Infection */ = {
 			isa = PBXGroup;
 			children = (
+				D819B82F2BB1CB42008051A1 /* Model */,
+				D819B82E2BB1CB3D008051A1 /* View */,
+				D819B82D2BB1CB34008051A1 /* Controller */,
+				D819B8302BB1CB66008051A1 /* Supporting */,
+			);
+			path = "VK-TestTask-Infection";
+			sourceTree = "<group>";
+		};
+		D819B82D2BB1CB34008051A1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D819B81D2BB1C854008051A1 /* SimulationParametersViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D819B82E2BB1CB3D008051A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D819B81F2BB1C854008051A1 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D819B82F2BB1CB42008051A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D819B8332BB1D73A008051A1 /* ParametersListDataProvider.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D819B8302BB1CB66008051A1 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
 				D819B8192BB1C854008051A1 /* AppDelegate.swift */,
 				D819B81B2BB1C854008051A1 /* SceneDelegate.swift */,
-				D819B81D2BB1C854008051A1 /* ViewController.swift */,
-				D819B81F2BB1C854008051A1 /* Main.storyboard */,
 				D819B8222BB1C855008051A1 /* Assets.xcassets */,
 				D819B8242BB1C855008051A1 /* LaunchScreen.storyboard */,
 				D819B8272BB1C855008051A1 /* Info.plist */,
 			);
-			path = "VK-TestTask-Infection";
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +173,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D819B81E2BB1C854008051A1 /* ViewController.swift in Sources */,
+				D819B8342BB1D73A008051A1 /* ParametersListDataProvider.swift in Sources */,
+				D819B81E2BB1C854008051A1 /* SimulationParametersViewController.swift in Sources */,
 				D819B81A2BB1C854008051A1 /* AppDelegate.swift in Sources */,
 				D819B81C2BB1C854008051A1 /* SceneDelegate.swift in Sources */,
 			);
@@ -289,7 +325,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8B274TVL49;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "VK-TestTask-Infection/Info.plist";
+				INFOPLIST_FILE = "VK-TestTask-Infection/Supporting/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +353,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8B274TVL49;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "VK-TestTask-Infection/Info.plist";
+				INFOPLIST_FILE = "VK-TestTask-Infection/Supporting/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
