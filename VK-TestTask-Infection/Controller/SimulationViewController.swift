@@ -16,9 +16,18 @@ class SimulationViewController: UIViewController {
     }
     
     // MARK: - Properties
+    var groupSizeCount: Int!
+    var infectionFactorCount: Int!
+    var timeCount: Int!
+    var timer: Timer!
     var infectedPeopleCountLabel = UILabel()
     var collectionView: UICollectionView!
-    
+    var people: [Person] = []
+    var infectedPeople: [Person] = [] {
+        didSet {
+            infectedPeopleCountLabel.text = "Заражены: \(infectedPeople.count) человек"
+        }
+    }
     var layout: [Layout: UICollectionViewLayout] = [:]
     var activeLayout: Layout = .threeItemsInRow {
         didSet {
@@ -36,18 +45,6 @@ class SimulationViewController: UIViewController {
             }
         }
     }
-    var groupSizeCount: Int!
-    var infectionFactorCount: Int!
-    var timeCount: Int!
-    
-    var people: [Person] = []
-    var infectedPeople: [Person] = [] {
-        didSet {
-            infectedPeopleCountLabel.text = "Заражены: \(infectedPeople.count) человек"
-        }
-    }
-    
-    var timer: Timer!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -57,18 +54,7 @@ class SimulationViewController: UIViewController {
         setupUI()
         generateLayouts()
         configureColletionView()
-        
-        timer = Timer.scheduledTimer(withTimeInterval: Double(timeCount), repeats: true, block: { [weak self] _ in
-            guard let self = self else { return }
-            
-            DispatchQueue.global(qos: .userInitiated).async {
-                self.infectNeighbours()
-                
-                DispatchQueue.main.async {
-                    self.reloadInfectedCells()
-                }
-            }
-        })
+        setupTimer()
     }
     
     deinit {
@@ -90,6 +76,20 @@ class SimulationViewController: UIViewController {
         collectionView.reloadItems(at: infectedItemsIndexPaths)
     }
     
+    private func setupTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: Double(timeCount), repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.infectNeighbours()
+                
+                DispatchQueue.main.async {
+                    self.reloadInfectedCells()
+                }
+            }
+        })
+    }
+    
     private func loadPeople() {
         var column: Int = 0
         var row: Int = 0
@@ -104,6 +104,7 @@ class SimulationViewController: UIViewController {
             }
         }
     }
+    
     private func updatePositions() {
         var column: Int = 0
         var row: Int = 0
@@ -120,7 +121,7 @@ class SimulationViewController: UIViewController {
         }
      }
     
-    private func personNeighbours(_ person: Person) -> [Person]? {
+    private func personNeighbours(for person: Person) -> [Person]? {
         var neighbours: [Person] = []
         
         let rowRange = (person.row - 1)...(person.row + 1)
@@ -147,7 +148,7 @@ class SimulationViewController: UIViewController {
             guard let self = self else {
                 fatalError()
             }
-            guard let infectedPersonNeighbours = self.personNeighbours(infectedPerson) else { return }
+            guard let infectedPersonNeighbours = self.personNeighbours(for: infectedPerson) else { return }
             let infectedPersonNeighboursCount = infectedPersonNeighbours.count
             
             if infectionFactor >= infectedPersonNeighboursCount {
@@ -162,7 +163,8 @@ class SimulationViewController: UIViewController {
                     guard let index = self.people.firstIndex(of: randomPerson) else {
                         fatalError()
                     }
-                    self.people[index].isInfected = true // вынес с main
+                    // Здесь иногда прилетает ошибка по памяти. Не сталкивался пока с таким.
+                    self.people[index].isInfected = true
                     
                     DispatchQueue.main.async {
                         if !self.infectedPeople.contains(self.people[index]) {
@@ -173,9 +175,7 @@ class SimulationViewController: UIViewController {
                                 self.presentAC()
                             }
                         }
-//                            self.reloadInfectedCells()
                     }
-                    
                 }
             }
         }
@@ -236,10 +236,6 @@ class SimulationViewController: UIViewController {
         layout[.fiveItemsInRow] = generateGridLayout(for: Layout.fiveItemsInRow)
     }
     
-    private func updateCollectionView() {
-        self.collectionView.reloadData()
-    }
-    
     private func generateGridLayout(for layout: Layout) -> UICollectionViewLayout {
         var groupHeightDimension: CGFloat
         var itemsCount: Int
@@ -294,10 +290,6 @@ class SimulationViewController: UIViewController {
         
         return UICollectionViewCompositionalLayout(section: section)
     }
-    
-    
-    
-    
 }
 
 extension SimulationViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -314,10 +306,7 @@ extension SimulationViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = people[indexPath.item]
-        print("Строка: \(item.row), Колонка: \(item.column)")
-        
-        people[indexPath.row].isInfected = true
+       people[indexPath.row].isInfected = true
         
         if !infectedPeople.contains(people[indexPath.row]) {
             infectedPeople.append(people[indexPath.row])
