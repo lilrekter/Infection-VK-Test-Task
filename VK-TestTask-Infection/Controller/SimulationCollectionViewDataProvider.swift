@@ -13,9 +13,14 @@ protocol DataProviderDelegate: AnyObject {
     func updateLabels()
     func invalidateTimer()
     func presentAC()
+    func reloadInfectedCells()
 }
 
 class SimulationCollectionViewDataProvider: NSObject {
+    
+    deinit {
+        print("SimulationCollectionViewDataProvider deinited")
+    }
     
     weak var delegate: DataProviderDelegate?
     
@@ -130,6 +135,6 @@ extension SimulationCollectionViewDataProvider: UICollectionViewDataSource, UICo
                 delegate?.presentAC()
             }
         }
-        collectionView.reloadItems(at: [indexPath])
+        delegate?.reloadInfectedCells()
     }
 }

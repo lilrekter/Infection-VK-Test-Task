@@ -67,29 +67,6 @@ class SimulationViewController: UIViewController {
         dataProvider.timeCount = self.timeCount
     }
     
-    func updateLabels() {
-        infectedPeopleCountLabel.text = "Заражены: \(dataProvider.infectedPeople.count) человек"
-    }
-    
-    func invalidateTimer() {
-        timer.invalidate()
-    }
-    
-    func presentAC() {
-        let ac = UIAlertController(title: "Все заражены", message: "Ты доволен?", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Начать заново!", style: .default, handler: { [weak self] _ in
-            self?.navigationController?.popViewController(animated: true)
-        }))
-        
-        present(ac, animated: true)
-    }
-
-    private func reloadInfectedCells() {
-        let visibleElementsIndexPaths = collectionView.indexPathsForVisibleItems
-        let infectedItemsIndexPaths = visibleElementsIndexPaths.filter({ dataProvider.people[$0.row].isInfected })
-        collectionView.reloadItems(at: infectedItemsIndexPaths)
-    }
-    
     private func setupTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: Double(timeCount), repeats: true, block: { [weak self] _ in
             guard let self = self else { return }
@@ -102,6 +79,10 @@ class SimulationViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    func invalidateTimer() {
+        timer.invalidate()
     }
     
     private func updatePositions() {
@@ -120,21 +101,26 @@ class SimulationViewController: UIViewController {
         }
      }
     
-    // MARK: - Objc
-    @objc private func popVC() {
-        timer.invalidate()
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @objc func switchLayout() {
-        switch activeLayout {
-        case .threeItemsInRow: activeLayout = .fourItemsInRow
-        case .fourItemsInRow: activeLayout = .fiveItemsInRow
-        case .fiveItemsInRow: activeLayout = .threeItemsInRow
-        }
-    }
-    
     //MARK: - UI
+    func presentAC() {
+        let ac = UIAlertController(title: "Все заражены", message: "Ты доволен?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Начать заново!", style: .default, handler: { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }))
+        
+        present(ac, animated: true)
+    }
+    
+    func reloadInfectedCells() {
+        let visibleElementsIndexPaths = collectionView.indexPathsForVisibleItems
+        let infectedItemsIndexPaths = visibleElementsIndexPaths.filter({ dataProvider.people[$0.row].isInfected })
+        collectionView.reloadItems(at: infectedItemsIndexPaths)
+    }
+    
+    func updateLabels() {
+        infectedPeopleCountLabel.text = "Заражены: \(dataProvider.infectedPeople.count) человек"
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
@@ -228,6 +214,20 @@ class SimulationViewController: UIViewController {
         )
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    // MARK: - Objc
+    @objc private func popVC() {
+        timer.invalidate()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func switchLayout() {
+        switch activeLayout {
+        case .threeItemsInRow: activeLayout = .fourItemsInRow
+        case .fourItemsInRow: activeLayout = .fiveItemsInRow
+        case .fiveItemsInRow: activeLayout = .threeItemsInRow
+        }
     }
 }
 
