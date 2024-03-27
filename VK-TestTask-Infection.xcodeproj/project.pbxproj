@@ -15,6 +15,7 @@
 		D819B8262BB1C855008051A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D819B8242BB1C855008051A1 /* LaunchScreen.storyboard */; };
 		D819B83E2BB31541008051A1 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B83D2BB31541008051A1 /* SimulationViewController.swift */; };
 		D819B8402BB325CD008051A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B83F2BB325CD008051A1 /* Person.swift */; };
+		D819B8462BB48FB3008051A1 /* SimulationCollectionViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8452BB48FB3008051A1 /* SimulationCollectionViewDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D819B8272BB1C855008051A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D819B83D2BB31541008051A1 /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
 		D819B83F2BB325CD008051A1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		D819B8452BB48FB3008051A1 /* SimulationCollectionViewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCollectionViewDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				D819B81D2BB1C854008051A1 /* SimulationParametersViewController.swift */,
 				D819B83D2BB31541008051A1 /* SimulationViewController.swift */,
+				D819B8452BB48FB3008051A1 /* SimulationCollectionViewDataProvider.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				D819B81E2BB1C854008051A1 /* SimulationParametersViewController.swift in Sources */,
 				D819B83E2BB31541008051A1 /* SimulationViewController.swift in Sources */,
+				D819B8462BB48FB3008051A1 /* SimulationCollectionViewDataProvider.swift in Sources */,
 				D819B8402BB325CD008051A1 /* Person.swift in Sources */,
 				D819B81A2BB1C854008051A1 /* AppDelegate.swift in Sources */,
 				D819B81C2BB1C854008051A1 /* SceneDelegate.swift in Sources */,
