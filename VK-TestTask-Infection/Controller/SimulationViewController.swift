@@ -103,7 +103,7 @@ class SimulationViewController: UIViewController {
     
     //MARK: - UI
     func presentAC() {
-        let ac = UIAlertController(title: "Все заражены", message: "Ты доволен?", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Все заражены", message: "Ну и что ты наделал?", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Начать заново!", style: .default, handler: { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)
         }))
@@ -118,7 +118,7 @@ class SimulationViewController: UIViewController {
     }
     
     func updateLabels() {
-        infectedPeopleCountLabel.text = "Заражены: \(dataProvider.infectedPeople.count) человек"
+        infectedPeopleCountLabel.text = "Здоровы: \(dataProvider.people.count - dataProvider.infectedPeople.count). Заражены: \(dataProvider.infectedPeople.count)."
     }
     
     private func setupUI() {
@@ -129,13 +129,14 @@ class SimulationViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Назад", style: .plain, target: self, action: #selector(popVC))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Масштаб", style: .plain, target: self, action: #selector(switchLayout))
         
-        infectedPeopleCountLabel.text = "Заражены: \(dataProvider.infectedPeople.count) человек"
+        infectedPeopleCountLabel.text = "Здоровы: \(dataProvider.people.count - dataProvider.infectedPeople.count). Заражены: \(dataProvider.infectedPeople.count)."
         view.addSubview(infectedPeopleCountLabel)
         infectedPeopleCountLabel.textAlignment = .right
         infectedPeopleCountLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             infectedPeopleCountLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            infectedPeopleCountLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+            infectedPeopleCountLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            infectedPeopleCountLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15)
         ])
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateGridLayout(for: activeLayout))
