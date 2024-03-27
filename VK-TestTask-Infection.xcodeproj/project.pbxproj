@@ -13,7 +13,13 @@
 		D819B8212BB1C854008051A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D819B81F2BB1C854008051A1 /* Main.storyboard */; };
 		D819B8232BB1C855008051A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D819B8222BB1C855008051A1 /* Assets.xcassets */; };
 		D819B8262BB1C855008051A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D819B8242BB1C855008051A1 /* LaunchScreen.storyboard */; };
-		D819B8342BB1D73A008051A1 /* ParametersListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8332BB1D73A008051A1 /* ParametersListDataProvider.swift */; };
+		D819B8342BB1D73A008051A1 /* ParametersListTableViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8332BB1D73A008051A1 /* ParametersListTableViewDataProvider.swift */; };
+		D819B8382BB223A4008051A1 /* ParametersListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8372BB223A3008051A1 /* ParametersListTableView.swift */; };
+		D819B83A2BB22998008051A1 /* ParametersListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8392BB22998008051A1 /* ParametersListTableViewDelegate.swift */; };
+		D819B83C2BB2CB24008051A1 /* ParametersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B83B2BB2CB24008051A1 /* ParametersListView.swift */; };
+		D819B83E2BB31541008051A1 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B83D2BB31541008051A1 /* SimulationViewController.swift */; };
+		D819B8402BB325CD008051A1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B83F2BB325CD008051A1 /* Person.swift */; };
+		D819B8422BB410A2008051A1 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D819B8412BB410A2008051A1 /* PersonCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +31,13 @@
 		D819B8222BB1C855008051A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D819B8252BB1C855008051A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D819B8272BB1C855008051A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D819B8332BB1D73A008051A1 /* ParametersListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersListDataProvider.swift; sourceTree = "<group>"; };
+		D819B8332BB1D73A008051A1 /* ParametersListTableViewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersListTableViewDataProvider.swift; sourceTree = "<group>"; };
+		D819B8372BB223A3008051A1 /* ParametersListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersListTableView.swift; sourceTree = "<group>"; };
+		D819B8392BB22998008051A1 /* ParametersListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersListTableViewDelegate.swift; sourceTree = "<group>"; };
+		D819B83B2BB2CB24008051A1 /* ParametersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersListView.swift; sourceTree = "<group>"; };
+		D819B83D2BB31541008051A1 /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
+		D819B83F2BB325CD008051A1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		D819B8412BB410A2008051A1 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				D819B81D2BB1C854008051A1 /* SimulationParametersViewController.swift */,
+				D819B83D2BB31541008051A1 /* SimulationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -78,6 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				D819B81F2BB1C854008051A1 /* Main.storyboard */,
+				D819B8372BB223A3008051A1 /* ParametersListTableView.swift */,
+				D819B83B2BB2CB24008051A1 /* ParametersListView.swift */,
+				D819B8412BB410A2008051A1 /* PersonCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,7 +101,9 @@
 		D819B82F2BB1CB42008051A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D819B8332BB1D73A008051A1 /* ParametersListDataProvider.swift */,
+				D819B8332BB1D73A008051A1 /* ParametersListTableViewDataProvider.swift */,
+				D819B8392BB22998008051A1 /* ParametersListTableViewDelegate.swift */,
+				D819B83F2BB325CD008051A1 /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,10 +191,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D819B8342BB1D73A008051A1 /* ParametersListDataProvider.swift in Sources */,
+				D819B8342BB1D73A008051A1 /* ParametersListTableViewDataProvider.swift in Sources */,
+				D819B8382BB223A4008051A1 /* ParametersListTableView.swift in Sources */,
+				D819B83A2BB22998008051A1 /* ParametersListTableViewDelegate.swift in Sources */,
+				D819B83C2BB2CB24008051A1 /* ParametersListView.swift in Sources */,
 				D819B81E2BB1C854008051A1 /* SimulationParametersViewController.swift in Sources */,
+				D819B83E2BB31541008051A1 /* SimulationViewController.swift in Sources */,
+				D819B8402BB325CD008051A1 /* Person.swift in Sources */,
 				D819B81A2BB1C854008051A1 /* AppDelegate.swift in Sources */,
 				D819B81C2BB1C854008051A1 /* SceneDelegate.swift in Sources */,
+				D819B8422BB410A2008051A1 /* PersonCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
